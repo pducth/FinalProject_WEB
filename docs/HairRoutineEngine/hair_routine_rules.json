@@ -1,0 +1,3391 @@
+{
+  "schema": "hair_routine_ruleset",
+  "ruleset_id": "hair-routine-quiz",
+  "ruleset_version": "3.0.0",
+  "released_at": "2026-10-29",
+  "locale": "vi-VN",
+  "business_rules": [
+    "BR-QUZ-01",
+    "BR-QUZ-02",
+    "BR-QUZ-03",
+    "BR-QUZ-04",
+    "BR-QUZ-05",
+    "BR-QUZ-06",
+    "BR-QUZ-08",
+    "BR-QUZ-09",
+    "BR-QUZ-10"
+  ],
+  "condition_dsl": {
+    "combinators": [
+      "all",
+      "any",
+      "not"
+    ],
+    "ops_single": [
+      "eq",
+      "in"
+    ],
+    "ops_multi": [
+      "contains_any"
+    ],
+    "note": "Câu chưa trả lời (câu không bắt buộc) có giá trị null: eq/in/contains_any đều trả về false."
+  },
+  "steps": [
+    {
+      "id": "scalp",
+      "order": 1,
+      "title_vi": "Tình trạng da đầu",
+      "title_en": "Your scalp",
+      "subtitle_en": "Start at the root. Your scalp sets the tone for the whole routine.",
+      "questions": [
+        {
+          "id": "scalp_condition",
+          "type": "single",
+          "required": true,
+          "text_vi": "Da đầu của bạn hiện như thế nào?",
+          "text_en": "How would you describe your scalp?",
+          "options": [
+            {
+              "id": "normal",
+              "label_vi": "Cân bằng, thoải mái",
+              "description_vi": "Không đổ dầu, không ngứa, không bong tróc",
+              "label_en": "Normal & balanced",
+              "hint_en": "Comfortable, no itching or flakes"
+            },
+            {
+              "id": "oily",
+              "label_vi": "Dầu nhanh",
+              "description_vi": "Chân tóc bết chỉ sau khoảng 1 ngày gội",
+              "label_en": "Oily quickly",
+              "hint_en": "Roots look greasy within a day"
+            },
+            {
+              "id": "dry_sensitive",
+              "label_vi": "Khô, ngứa, nhạy cảm",
+              "description_vi": "Căng rát, ngứa, dễ kích ứng",
+              "label_en": "Dry, itchy or sensitive",
+              "hint_en": "Feels tight or irritated"
+            },
+            {
+              "id": "flaky",
+              "label_vi": "Gàu, bong tróc",
+              "description_vi": "Có vảy trắng hoặc bong tróc trên da đầu",
+              "label_en": "Dandruff or flaking",
+              "hint_en": "Visible flakes on the scalp"
+            },
+            {
+              "id": "thinning",
+              "label_vi": "Tóc thưa hoặc rụng nhiều",
+              "description_vi": "Tóc mỏng dần, rụng nhiều khi gội hoặc chải",
+              "label_en": "Thinning or shedding",
+              "hint_en": "Hair feels thinner or sheds a lot when washing or brushing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hair_condition",
+      "order": 2,
+      "title_vi": "Tình trạng sợi tóc",
+      "title_en": "Your strands",
+      "subtitle_en": "Tell us how your hair looks and feels today.",
+      "questions": [
+        {
+          "id": "hair_texture",
+          "type": "single",
+          "required": true,
+          "text_vi": "Kiểu tóc tự nhiên của bạn?",
+          "text_en": "What is your natural hair texture?",
+          "options": [
+            {
+              "id": "straight",
+              "label_vi": "Thẳng",
+              "description_vi": "Sợi tóc thẳng tự nhiên",
+              "label_en": "Straight",
+              "hint_en": "Falls flat with no natural wave"
+            },
+            {
+              "id": "wavy",
+              "label_vi": "Gợn sóng",
+              "description_vi": "Sóng nhẹ hình chữ S",
+              "label_en": "Wavy",
+              "hint_en": "Loose S-shaped waves"
+            },
+            {
+              "id": "curly",
+              "label_vi": "Xoăn",
+              "description_vi": "Lọn xoăn hoặc xoăn tít rõ",
+              "label_en": "Curly",
+              "hint_en": "Defined curls or coils"
+            }
+          ]
+        },
+        {
+          "id": "hair_thickness",
+          "type": "single",
+          "required": true,
+          "text_vi": "Sợi tóc của bạn dày hay mảnh?",
+          "text_en": "How thick are your strands?",
+          "options": [
+            {
+              "id": "fine",
+              "label_vi": "Mảnh, dễ xẹp",
+              "description_vi": "Thiếu độ phồng tự nhiên",
+              "label_en": "Fine & limp",
+              "hint_en": "Lacks natural volume"
+            },
+            {
+              "id": "medium",
+              "label_vi": "Vừa",
+              "description_vi": "Cân bằng giữa độ dày và độ bay",
+              "label_en": "Medium",
+              "hint_en": "Balanced body and movement"
+            },
+            {
+              "id": "thick",
+              "label_vi": "Dày, thô",
+              "description_vi": "Nhiều tóc, dễ bị bông, xù",
+              "label_en": "Thick & coarse",
+              "hint_en": "Dense, prone to puffiness"
+            }
+          ]
+        },
+        {
+          "id": "hair_damage",
+          "type": "single",
+          "required": true,
+          "text_vi": "Tình trạng tóc hiện tại của bạn?",
+          "text_en": "How would you describe your hair’s current condition?",
+          "options": [
+            {
+              "id": "healthy",
+              "label_vi": "Khỏe mượt",
+              "description_vi": "Ít chẻ ngọn, không xơ rối",
+              "label_en": "Healthy & smooth",
+              "hint_en": "Shiny with few split ends"
+            },
+            {
+              "id": "dry_frizzy",
+              "label_vi": "Khô, xơ, xù",
+              "description_vi": "Thiếu ẩm, dễ rối",
+              "label_en": "Dry, coarse or frizzy",
+              "hint_en": "Rough texture, lacks shine"
+            },
+            {
+              "id": "damaged",
+              "label_vi": "Hư tổn",
+              "description_vi": "Chẻ ngọn, gãy rụng, xơ xác",
+              "label_en": "Damaged",
+              "hint_en": "Breakage, split ends or a straw-like feel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "habits_history",
+      "order": 3,
+      "title_vi": "Màu tóc và thói quen gội",
+      "title_en": "Color & washing",
+      "subtitle_en": "Color services and how often you wash change what your hair needs.",
+      "questions": [
+        {
+          "id": "chemical_history",
+          "type": "multi",
+          "required": true,
+          "text_vi": "Tóc bạn đã qua xử lý nào? (chọn tất cả phù hợp)",
+          "text_en": "Has your hair been colored or chemically treated?",
+          "options": [
+            {
+              "id": "none",
+              "label_vi": "Chưa từng",
+              "description_vi": "Tóc nguyên bản, chưa qua hóa chất",
+              "label_en": "No treatments",
+              "hint_en": "Virgin, natural hair",
+              "exclusive": true
+            },
+            {
+              "id": "dyed",
+              "label_vi": "Nhuộm màu",
+              "description_vi": "Nhuộm màu thông thường",
+              "label_en": "Color-treated",
+              "hint_en": "Dyed or toned"
+            },
+            {
+              "id": "bleached",
+              "label_vi": "Blonde, tẩy hoặc tóc bạc",
+              "description_vi": "Tóc sáng màu hoặc bạc, hay bị ám vàng",
+              "label_en": "Blonde, bleached or grey",
+              "hint_en": "Light or silver hair that turns brassy"
+            },
+            {
+              "id": "permed",
+              "label_vi": "Uốn hoặc duỗi hóa chất",
+              "description_vi": "Uốn nóng, uốn lạnh, duỗi, ép",
+              "label_en": "Permed or straightened",
+              "hint_en": "Chemical texture service"
+            }
+          ]
+        },
+        {
+          "id": "wash_frequency",
+          "type": "single",
+          "required": true,
+          "text_vi": "Bạn gội đầu bao lâu một lần?",
+          "text_en": "How often do you wash your hair?",
+          "options": [
+            {
+              "id": "daily",
+              "label_vi": "Hằng ngày",
+              "description_vi": "Gội mỗi ngày",
+              "label_en": "Daily",
+              "hint_en": "Every day"
+            },
+            {
+              "id": "every_2_3_days",
+              "label_vi": "Cách 2–3 ngày",
+              "description_vi": "Gội vài lần mỗi tuần",
+              "label_en": "Every 2–3 days",
+              "hint_en": "A few times a week"
+            },
+            {
+              "id": "weekly",
+              "label_vi": "1–2 lần mỗi tuần",
+              "description_vi": "Gội thưa",
+              "label_en": "1–2 times a week",
+              "hint_en": "Rarely"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "goal",
+      "order": 4,
+      "title_vi": "Mục tiêu và sở thích",
+      "title_en": "Your goal",
+      "subtitle_en": "What would you most like your routine to achieve?",
+      "questions": [
+        {
+          "id": "primary_goal",
+          "type": "single",
+          "required": true,
+          "text_vi": "Mục tiêu chính của bạn là gì?",
+          "text_en": "What is your primary hair goal?",
+          "options": [
+            {
+              "id": "repair",
+              "label_vi": "Phục hồi hư tổn",
+              "description_vi": "Làm chắc sợi tóc yếu, gãy",
+              "label_en": "Repair damage",
+              "hint_en": "Strengthen weak, broken strands"
+            },
+            {
+              "id": "scalp_care",
+              "label_vi": "Chăm sóc da đầu",
+              "description_vi": "Cân bằng dầu, làm dịu, giảm gàu",
+              "label_en": "Care for my scalp",
+              "hint_en": "Balance oil, soothe or remove flakes"
+            },
+            {
+              "id": "color_protect",
+              "label_vi": "Giữ và điều chỉnh màu",
+              "description_vi": "Giữ màu bền, khử ám vàng",
+              "label_en": "Protect or tone my color",
+              "hint_en": "Keep color vibrant, cancel brassiness"
+            },
+            {
+              "id": "define_curls",
+              "label_vi": "Định hình xoăn",
+              "description_vi": "Lọn xoăn bồng bềnh, ít xù",
+              "label_en": "Define my curls",
+              "hint_en": "Bouncy, frizz-free definition"
+            },
+            {
+              "id": "hydrate",
+              "label_vi": "Cấp ẩm",
+              "description_vi": "Tóc mềm hơn, dễ vào nếp",
+              "label_en": "Add hydration",
+              "hint_en": "Softer, more manageable hair"
+            },
+            {
+              "id": "volume",
+              "label_vi": "Tăng độ phồng",
+              "description_vi": "Nâng chân tóc, thêm độ dày",
+              "label_en": "Add volume",
+              "hint_en": "Lift and body from the roots"
+            },
+            {
+              "id": "smooth_style",
+              "label_vi": "Mượt và tạo kiểu",
+              "description_vi": "Suôn mượt, giảm xù, hoặc tạo texture, giữ nếp",
+              "label_en": "Smooth & style",
+              "hint_en": "Sleek, frizz-free finishes, or texture and hold"
+            }
+          ]
+        },
+        {
+          "id": "formula_preference",
+          "type": "single",
+          "required": false,
+          "text_vi": "Bạn ưu tiên điều gì ở công thức? (không bắt buộc)",
+          "text_en": "What matters most in your formula?",
+          "options": [
+            {
+              "id": "none",
+              "label_vi": "Không có ưu tiên",
+              "description_vi": "Gợi ý theo tình trạng tóc của bạn",
+              "label_en": "No preference",
+              "hint_en": "Choose what suits my hair"
+            },
+            {
+              "id": "botanical",
+              "label_vi": "Thiên nhiên, không silicone",
+              "description_vi": "Thuần thực vật, dịu nhẹ với da đầu",
+              "label_en": "Botanical & silicone-free",
+              "hint_en": "Plant-based care, gentle on the scalp"
+            },
+            {
+              "id": "salon",
+              "label_vi": "Hiệu quả chuẩn salon",
+              "description_vi": "Công thức chuyên nghiệp cho kết quả rõ rệt",
+              "label_en": "Salon-grade performance",
+              "hint_en": "Professional formulas known for visible results"
+            },
+            {
+              "id": "eco",
+              "label_vi": "Thân thiện môi trường",
+              "description_vi": "Túi refill, dầu gội bánh, công thức thuần chay",
+              "label_en": "Eco-conscious",
+              "hint_en": "Refills, solid bars and vegan formulas"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "labels": {
+    "priority_order": [
+      "Repair",
+      "Scalp",
+      "Color",
+      "Curl",
+      "Hydration",
+      "Volume",
+      "Styling"
+    ],
+    "definitions": {
+      "Repair": {
+        "display_vi": "Phục hồi hư tổn",
+        "display_en": "Repair",
+        "advice_vi": "Cấu trúc sợi tóc đang bị tổn thương. Ưu tiên mặt nạ phục hồi 1-2 lần/tuần và giảm tần suất dùng nhiệt."
+      },
+      "Scalp": {
+        "display_vi": "Cân bằng da đầu",
+        "display_en": "Scalp Balance",
+        "advice_vi": "Da đầu là nền tảng của mái tóc khỏe. Dùng dòng làm sạch dịu nhẹ, tránh gãi mạnh và gội nước quá nóng."
+      },
+      "Color": {
+        "display_vi": "Giữ màu tóc nhuộm",
+        "display_en": "Color Care",
+        "advice_vi": "Tóc nhuộm/tẩy cần dòng chăm sóc bảo vệ màu, hạn chế nước nóng và tia UV để màu bền hơn."
+      },
+      "Curl": {
+        "display_vi": "Định hình lọn xoăn",
+        "display_en": "Curl Definition",
+        "advice_vi": "Lọn xoăn cần độ ẩm và sản phẩm tạo nếp riêng để giữ form, giảm xù."
+      },
+      "Hydration": {
+        "display_vi": "Cấp ẩm hằng ngày",
+        "display_en": "Hydrating",
+        "advice_vi": "Tóc cần thêm độ ẩm để mềm mượt và dễ vào nếp hơn."
+      },
+      "Volume": {
+        "display_vi": "Tăng độ phồng",
+        "display_en": "Volume",
+        "advice_vi": "Chọn công thức nhẹ, không làm nặng chân tóc để tóc phồng và có thân hơn."
+      },
+      "Styling": {
+        "display_vi": "Vào nếp & tạo kiểu",
+        "display_en": "Styling",
+        "advice_vi": "Dùng sản phẩm bảo vệ nhiệt và kiểm soát xù để tạo kiểu mà vẫn giữ tóc khỏe."
+      }
+    },
+    "goal_to_label": {
+      "repair": "Repair",
+      "scalp_care": "Scalp",
+      "color_protect": "Color",
+      "define_curls": "Curl",
+      "hydrate": "Hydration",
+      "volume": "Volume",
+      "smooth_style": "Styling"
+    }
+  },
+  "rules": [
+    {
+      "id": "R-REP-01",
+      "label": "Repair",
+      "description": "Tóc hư tổn (chẻ ngọn, gãy rụng)",
+      "when": {
+        "q": "hair_damage",
+        "op": "eq",
+        "value": "damaged"
+      },
+      "reason_en": "Your hair is damaged, so rebuilding it comes first."
+    },
+    {
+      "id": "R-REP-02",
+      "label": "Repair",
+      "description": "Đã tẩy/uốn hóa chất và tóc có dấu hiệu khô xơ hoặc hư tổn",
+      "when": {
+        "all": [
+          {
+            "q": "chemical_history",
+            "op": "contains_any",
+            "value": [
+              "bleached",
+              "permed"
+            ]
+          },
+          {
+            "q": "hair_damage",
+            "op": "in",
+            "value": [
+              "dry_frizzy",
+              "damaged"
+            ]
+          }
+        ]
+      },
+      "reason_en": "Chemical lightening or perming plus dry or damaged strands calls for restorative care."
+    },
+    {
+      "id": "R-REP-03",
+      "label": "Repair",
+      "description": "Mục tiêu chính là phục hồi",
+      "when": {
+        "q": "primary_goal",
+        "op": "eq",
+        "value": "repair"
+      },
+      "reason_en": "Repairing damage is your main goal."
+    },
+    {
+      "id": "R-SCA-01",
+      "label": "Scalp",
+      "description": "Da đầu khô/nhạy cảm hoặc bong tróc",
+      "when": {
+        "q": "scalp_condition",
+        "op": "in",
+        "value": [
+          "dry_sensitive",
+          "flaky"
+        ]
+      },
+      "reason_en": "A dry, itchy, sensitive or flaky scalp needs gentle, soothing care."
+    },
+    {
+      "id": "R-SCA-02",
+      "label": "Scalp",
+      "description": "Da đầu dầu nhờn",
+      "when": {
+        "q": "scalp_condition",
+        "op": "eq",
+        "value": "oily"
+      },
+      "reason_en": "A scalp that turns oily quickly benefits from balancing care."
+    },
+    {
+      "id": "R-SCA-03",
+      "label": "Scalp",
+      "description": "Mục tiêu chính là chăm sóc da đầu",
+      "when": {
+        "q": "primary_goal",
+        "op": "eq",
+        "value": "scalp_care"
+      },
+      "reason_en": "Caring for your scalp is your main goal."
+    },
+    {
+      "id": "R-SCA-04",
+      "label": "Scalp",
+      "description": "Tóc thưa hoặc rụng nhiều",
+      "when": {
+        "q": "scalp_condition",
+        "op": "eq",
+        "value": "thinning"
+      },
+      "reason_en": "Thinning or shedding calls for a scalp-first routine."
+    },
+    {
+      "id": "R-COL-01",
+      "label": "Color",
+      "description": "Tóc đã nhuộm hoặc tẩy",
+      "when": {
+        "q": "chemical_history",
+        "op": "contains_any",
+        "value": [
+          "dyed",
+          "bleached"
+        ]
+      },
+      "reason_en": "Color-treated or lightened hair needs color-safe care."
+    },
+    {
+      "id": "R-COL-02",
+      "label": "Color",
+      "description": "Mục tiêu chính là giữ màu",
+      "when": {
+        "q": "primary_goal",
+        "op": "eq",
+        "value": "color_protect"
+      },
+      "reason_en": "Protecting or toning your color is your main goal."
+    },
+    {
+      "id": "R-CUR-01",
+      "label": "Curl",
+      "description": "Tóc xoăn tự nhiên",
+      "when": {
+        "q": "hair_texture",
+        "op": "eq",
+        "value": "curly"
+      },
+      "reason_en": "Curly hair thrives on curl-specific moisture and definition."
+    },
+    {
+      "id": "R-CUR-02",
+      "label": "Curl",
+      "description": "Tóc gợn sóng và muốn định hình lọn",
+      "when": {
+        "all": [
+          {
+            "q": "hair_texture",
+            "op": "eq",
+            "value": "wavy"
+          },
+          {
+            "q": "primary_goal",
+            "op": "eq",
+            "value": "define_curls"
+          }
+        ]
+      },
+      "reason_en": "Wavy hair and a goal of defining curls point to curl care."
+    },
+    {
+      "id": "R-CUR-03",
+      "label": "Curl",
+      "description": "Tóc đã uốn hóa chất và muốn định hình lọn",
+      "when": {
+        "all": [
+          {
+            "q": "chemical_history",
+            "op": "contains_any",
+            "value": [
+              "permed"
+            ]
+          },
+          {
+            "q": "primary_goal",
+            "op": "eq",
+            "value": "define_curls"
+          }
+        ]
+      },
+      "reason_en": "Permed hair and a goal of defining curls point to curl care."
+    },
+    {
+      "id": "R-HYD-01",
+      "label": "Hydration",
+      "description": "Tóc khô, xơ, xù",
+      "when": {
+        "q": "hair_damage",
+        "op": "eq",
+        "value": "dry_frizzy"
+      },
+      "reason_en": "Dry, frizzy hair is asking for moisture."
+    },
+    {
+      "id": "R-HYD-02",
+      "label": "Hydration",
+      "description": "Mục tiêu chính là cấp ẩm",
+      "when": {
+        "q": "primary_goal",
+        "op": "eq",
+        "value": "hydrate"
+      },
+      "reason_en": "Adding hydration is your main goal."
+    },
+    {
+      "id": "R-HYD-03",
+      "label": "Hydration",
+      "description": "Gội hằng ngày và tóc đã qua hóa chất (dễ mất ẩm)",
+      "when": {
+        "all": [
+          {
+            "q": "wash_frequency",
+            "op": "eq",
+            "value": "daily"
+          },
+          {
+            "q": "chemical_history",
+            "op": "contains_any",
+            "value": [
+              "dyed",
+              "bleached",
+              "permed"
+            ]
+          }
+        ]
+      },
+      "reason_en": "Frequent washing plus chemical services can dry hair out, so extra moisture helps."
+    },
+    {
+      "id": "R-VOL-01",
+      "label": "Volume",
+      "description": "Mục tiêu chính là tăng phồng",
+      "when": {
+        "q": "primary_goal",
+        "op": "eq",
+        "value": "volume"
+      },
+      "reason_en": "Adding volume is your main goal."
+    },
+    {
+      "id": "R-VOL-02",
+      "label": "Volume",
+      "description": "Tóc mảnh và da đầu dầu (dễ xẹp, bết)",
+      "when": {
+        "all": [
+          {
+            "q": "hair_thickness",
+            "op": "eq",
+            "value": "fine"
+          },
+          {
+            "q": "scalp_condition",
+            "op": "eq",
+            "value": "oily"
+          }
+        ]
+      },
+      "reason_en": "Fine hair with an oily scalp needs light, lifting formulas."
+    },
+    {
+      "id": "R-STY-01",
+      "label": "Styling",
+      "description": "Mục tiêu chính là vào nếp, tạo kiểu",
+      "when": {
+        "q": "primary_goal",
+        "op": "eq",
+        "value": "smooth_style"
+      },
+      "reason_en": "Smoothing and styling is your main goal."
+    }
+  ],
+  "fallback": {
+    "rule_id": "R-DEFAULT",
+    "label": "Hydration",
+    "description": "Không khớp luật đặc trị nào thì trả về routine Cấp ẩm hằng ngày (BR-QUZ-06)",
+    "reason_en": "Nothing in your answers called for a specialist routine, so we chose gentle daily hydration."
+  },
+  "routine": {
+    "steps": [
+      {
+        "id": "cleanse",
+        "order": 1,
+        "title_en": "Cleanse",
+        "title_vi": "Làm sạch",
+        "category_hint": "Shampoo"
+      },
+      {
+        "id": "condition",
+        "order": 2,
+        "title_en": "Condition",
+        "title_vi": "Dưỡng",
+        "category_hint": "Conditioner"
+      },
+      {
+        "id": "treat",
+        "order": 3,
+        "title_en": "Treat & Nourish",
+        "title_vi": "Điều trị",
+        "category_hint": "Treatment / Mask"
+      },
+      {
+        "id": "style_protect",
+        "order": 4,
+        "title_en": "Style & Protect",
+        "title_vi": "Tạo kiểu & bảo vệ",
+        "category_hint": "Styling & Finishing"
+      }
+    ],
+    "min_steps": 3,
+    "max_addons": 1,
+    "by_label": {
+      "Repair": {
+        "cleanse": [
+          {
+            "product": "davines-heart-of-glass-silkening-chelating-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "bleached"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-classic-shampoo",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "thick"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-quinoa-protein-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "wavy",
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-nounou-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "dyed",
+                    "bleached",
+                    "permed"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged",
+                    "dry_frizzy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-melu-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine",
+                    "medium"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-shampoo",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "daily"
+              ]
+            }
+          },
+          {
+            "product": "moisture-repair-shampoo"
+          }
+        ],
+        "condition": [
+          {
+            "product": "davines-heart-of-glass-rich-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "bleached"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-classic-conditioner",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "thick"
+              ]
+            }
+          },
+          {
+            "product": "davines-replumping-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "wavy",
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-nounou-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "dyed",
+                    "bleached",
+                    "permed"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged",
+                    "dry_frizzy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-melu-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine",
+                    "medium"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-conditioner",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "daily"
+              ]
+            }
+          },
+          {
+            "product": "moisture-repair-conditioner"
+          }
+        ],
+        "treat": [
+          {
+            "product": "davines-heart-of-glass-instant-bonding-glow",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "bleached"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-beautiful-things-restoring-leave-in-mask",
+            "when": {
+              "q": "chemical_history",
+              "op": "contains_any",
+              "value": [
+                "dyed",
+                "bleached"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-quinoa-protein-treatment-mask",
+            "when": {
+              "q": "chemical_history",
+              "op": "contains_any",
+              "value": [
+                "permed"
+              ]
+            }
+          },
+          {
+            "product": "rahua-omega-9-hair-mask",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "thick"
+              ]
+            }
+          },
+          {
+            "product": "rahua-elixir",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "curly"
+              ]
+            }
+          },
+          {
+            "product": "moroccanoil-treatment-light",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-quinoa-protein-hair-ampoule",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "restorative-hair-mask"
+          },
+          {
+            "product": "davines-nounou-mask"
+          },
+          {
+            "product": "moroccanoil-treatment-original"
+          },
+          {
+            "product": "rahua-leave-in-treatment"
+          }
+        ],
+        "style_protect": [
+          {
+            "product": "perfect-defense-heat-protectant",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                },
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "dyed",
+                    "bleached",
+                    "permed"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "mending-infusion",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-replenishing-hair-mist-jasmine-vetiver",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "leave-in-conditioner"
+          }
+        ]
+      },
+      "Scalp": {
+        "cleanse": [
+          {
+            "product": "davines-energizing-shampoo",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "thinning"
+              ]
+            }
+          },
+          {
+            "product": "davines-purifying-shampoo",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "flaky"
+              ]
+            }
+          },
+          {
+            "product": "davines-nourishing-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "dry_sensitive"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "dry_frizzy",
+                    "damaged"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-aloe-vera-shampoo",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "dry_sensitive"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-salt-scrub-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "oily"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "daily"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-solu-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "oily"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "weekly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-scalp-exfoliating-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "oily"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-rebalance-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "oily"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "aromatica-tea-tree-purifying-shampoo",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "oily"
+              ]
+            }
+          },
+          {
+            "product": "davines-energizing-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "normal"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "scalp-balancing-shampoo",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "healthy"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-scalp-scaling-shampoo-bar",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "weekly"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-scalp-scaling-shampoo"
+          },
+          {
+            "product": "rahua-scalp-exfoliating-shampoo"
+          }
+        ],
+        "condition": [
+          {
+            "product": "aromatica-rosemary-hair-thickening-conditioner",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "thinning"
+              ]
+            }
+          },
+          {
+            "product": "rahua-aloe-vera-conditioner",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "dry_sensitive"
+              ]
+            }
+          },
+          {
+            "product": "rahua-rebalance-conditioner",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "oily",
+                "flaky"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-hair-thickening-conditioner",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "scalp-balancing-conditioner"
+          }
+        ],
+        "treat": [
+          {
+            "product": "aromatica-rosemary-pdrn-scalp-serum",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "thinning"
+              ]
+            }
+          },
+          {
+            "product": "rahua-founders-blend-scalp-hair-treatment",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "dry_sensitive"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-tea-tree-purifying-tonic",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "flaky"
+              ]
+            }
+          },
+          {
+            "product": "purifying-pre-wash-scalp-scrub",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "oily"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "weekly",
+                    "every_2_3_days"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-scalp-scrub",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "oily"
+              ]
+            }
+          },
+          {
+            "product": "davines-solu-sea-salt-scrub",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "normal"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "weekly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-geranium-scalp-scrub",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "normal"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "every_2_3_days"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-energizing-overnight-serum",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-root-enhancer",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "normal"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-pdrn-scalp-serum"
+          },
+          {
+            "product": "rahua-scalp-skin-toner"
+          }
+        ],
+        "style_protect": [
+          {
+            "product": "perfect-defense-heat-protectant",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy",
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-dry-shampoo-powder",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "oily"
+              ]
+            }
+          },
+          {
+            "product": "davines-this-is-an-invisible-dry-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "normal",
+                    "thinning"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "daily"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-hydration-detangler-uv-barrier"
+          }
+        ]
+      },
+      "Color": {
+        "cleanse": [
+          {
+            "product": "davines-heart-of-glass-silkening-chelating-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "bleached"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "blonde-perfecting-purple-shampoo",
+            "when": {
+              "q": "chemical_history",
+              "op": "contains_any",
+              "value": [
+                "bleached"
+              ]
+            }
+          },
+          {
+            "product": "rahua-color-fulltm-shampoo",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "color-care-shampoo",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "daily"
+              ]
+            }
+          },
+          {
+            "product": "davines-minu-shampoo"
+          }
+        ],
+        "condition": [
+          {
+            "product": "davines-heart-of-glass-rich-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "bleached"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "blonde-perfecting-purple-conditioner",
+            "when": {
+              "q": "chemical_history",
+              "op": "contains_any",
+              "value": [
+                "bleached"
+              ]
+            }
+          },
+          {
+            "product": "rahua-color-fulltm-conditioner",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "color-care-conditioner",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "daily"
+              ]
+            }
+          },
+          {
+            "product": "davines-minu-conditioner"
+          }
+        ],
+        "treat": [
+          {
+            "product": "davines-beautiful-things-restoring-leave-in-mask",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "bleached"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "damaged",
+                    "dry_frizzy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-heart-of-glass-instant-bonding-glow",
+            "when": {
+              "q": "chemical_history",
+              "op": "contains_any",
+              "value": [
+                "bleached"
+              ]
+            }
+          },
+          {
+            "product": "rahua-color-fulltm-hair-mask",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "high-shine-gloss-mask",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "healthy"
+              ]
+            }
+          },
+          {
+            "product": "rahua-color-fulltm-glossing-oil-mist",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "davines-beautiful-things-restoring-leave-in-mask"
+          }
+        ],
+        "style_protect": [
+          {
+            "product": "perfect-defense-heat-protectant",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy",
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "rahua-hydration-detangler-uv-barrier"
+          }
+        ]
+      },
+      "Curl": {
+        "cleanse": [
+          {
+            "product": "davines-love-curl-co-wash",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "dry_frizzy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-hydration-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "hydrating-shampoo",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "wavy"
+              ]
+            }
+          },
+          {
+            "product": "davines-love-curl-shampoo"
+          }
+        ],
+        "condition": [
+          {
+            "product": "rahua-hydration-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "curl-enhancing-conditioner",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "wavy"
+              ]
+            }
+          },
+          {
+            "product": "davines-love-curl-conditioner"
+          },
+          {
+            "product": "hydrating-conditioner"
+          }
+        ],
+        "treat": [
+          {
+            "product": "weightless-hydrating-mask",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "rahua-hydration-hair-mask",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "dry_frizzy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-hair-butter",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "intense-hydrating-mask"
+          },
+          {
+            "product": "rahua-elixir"
+          }
+        ],
+        "style_protect": [
+          {
+            "product": "davines-this-is-a-curl-moisturizing-mousse",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "rahua-enchanted-islandtm-vegan-curl-butter",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "intense-curl-cream",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "curl-control-mousse",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "curly"
+              ]
+            }
+          },
+          {
+            "product": "davines-this-is-a-curl-building-serum",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "wavy"
+              ]
+            }
+          },
+          {
+            "product": "curl-defining-cream"
+          },
+          {
+            "product": "rahua-control-cream-curl-styler"
+          }
+        ]
+      },
+      "Hydration": {
+        "cleanse": [
+          {
+            "product": "rahua-hydration-shampoo",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-dede-shampoo",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "daily"
+              ]
+            }
+          },
+          {
+            "product": "davines-momo-shampoo",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "hydrating-shampoo"
+          },
+          {
+            "product": "davines-oi-shampoo"
+          }
+        ],
+        "condition": [
+          {
+            "product": "rahua-hydration-conditioner",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-dede-leave-in-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "dry_frizzy",
+                    "damaged"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "daily"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-dede-conditioner",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "daily"
+              ]
+            }
+          },
+          {
+            "product": "davines-momo-conditioner",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-conditioner",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "hydrating-conditioner"
+          },
+          {
+            "product": "davines-oi-all-in-one-milk"
+          }
+        ],
+        "treat": [
+          {
+            "product": "weightless-hydrating-mask",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "davines-replenishing-butter",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "dry_frizzy"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-hydration-hair-mask",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-hair-butter",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "overnight-leave-in-mask",
+            "when": {
+              "q": "wash_frequency",
+              "op": "in",
+              "value": [
+                "weekly"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-3-in-1-treatment",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "straight"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "intense-hydrating-mask"
+          }
+        ],
+        "style_protect": [
+          {
+            "product": "perfect-defense-heat-protectant",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy",
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "leave-in-conditioner",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "hydrating-styling-cream",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "straight"
+              ]
+            }
+          },
+          {
+            "product": "rahua-hydration-detangler-uv-barrier"
+          }
+        ]
+      },
+      "Volume": {
+        "cleanse": [
+          {
+            "product": "davines-volu-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "every_2_3_days",
+                    "weekly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-voluminous-shampoo",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "clarifying-shampoo",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "oily"
+              ]
+            }
+          },
+          {
+            "product": "extra-volume-shampoo"
+          }
+        ],
+        "condition": [
+          {
+            "product": "davines-volu-conditioner",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "every_2_3_days",
+                    "weekly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-voluminous-conditioner",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-hair-thickening-conditioner",
+            "when": {
+              "q": "scalp_condition",
+              "op": "in",
+              "value": [
+                "oily"
+              ]
+            }
+          },
+          {
+            "product": "extra-volume-conditioner"
+          }
+        ],
+        "treat": [
+          {
+            "product": "aromatica-rosemary-root-volumizing-scalp-ampoule",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "oily"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "aromatica-rosemary-root-enhancer",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "normal"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-energizing-overnight-serum",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "dry_sensitive",
+                    "flaky"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "moroccanoil-treatment-mist"
+          },
+          {
+            "product": "weightless-hydrating-mask"
+          }
+        ],
+        "style_protect": [
+          {
+            "product": "rahua-voluminous-dry-shampoo",
+            "when": {
+              "all": [
+                {
+                  "q": "scalp_condition",
+                  "op": "in",
+                  "value": [
+                    "oily"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "weekly",
+                    "every_2_3_days"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "root-boost",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "straight"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "volumizing-mist",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "rahua-aloe-vera-hair-mousse",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "wavy",
+                "curly"
+              ]
+            }
+          },
+          {
+            "product": "volumizing-mousse",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "medium"
+              ]
+            }
+          },
+          {
+            "product": "thickening-lotion",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "thick"
+              ]
+            }
+          },
+          {
+            "product": "root-boost"
+          },
+          {
+            "product": "texture-volume-hair-powder"
+          }
+        ]
+      },
+      "Styling": {
+        "cleanse": [
+          {
+            "product": "davines-love-smoothing-shampoo",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "wavy",
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-shampoo",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "rahua-enchanted-islandtm-shampoo",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "healthy"
+              ]
+            }
+          },
+          {
+            "product": "frizz-control-shampoo"
+          }
+        ],
+        "condition": [
+          {
+            "product": "davines-love-smoothing-conditioner",
+            "when": {
+              "any": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "wavy",
+                    "curly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-all-in-one-milk",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "rahua-enchanted-islandtm-conditioner",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "healthy"
+              ]
+            }
+          },
+          {
+            "product": "frizz-control-conditioner"
+          }
+        ],
+        "treat": [
+          {
+            "product": "aromatica-replenishing-leave-in-treatment-lavender-patchouli",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "rahua-leave-in-treatment",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "moroccanoil-treatment-light",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-oil",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "wavy",
+                "curly"
+              ]
+            }
+          },
+          {
+            "product": "rahua-legendary-amazon-oiltm",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "davines-nourishing-oil",
+            "when": {
+              "q": "chemical_history",
+              "op": "contains_any",
+              "value": [
+                "permed"
+              ]
+            }
+          },
+          {
+            "product": "davines-oi-souffle",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "medium"
+              ]
+            }
+          },
+          {
+            "product": "moroccanoil-treatment-original"
+          },
+          {
+            "product": "aromatica-ritual-hair-oil-jasmine-vetiver"
+          },
+          {
+            "product": "aromatica-ritual-hair-oil-lavender-patchouli"
+          },
+          {
+            "product": "davines-oi-souffle"
+          }
+        ],
+        "style_protect": [
+          {
+            "product": "dry-shampoo-light-tones",
+            "when": {
+              "all": [
+                {
+                  "q": "chemical_history",
+                  "op": "contains_any",
+                  "value": [
+                    "bleached"
+                  ]
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "weekly",
+                    "every_2_3_days"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "dry-shampoo-dark-tones",
+            "when": {
+              "all": [
+                {
+                  "not": {
+                    "q": "chemical_history",
+                    "op": "contains_any",
+                    "value": [
+                      "bleached"
+                    ]
+                  }
+                },
+                {
+                  "q": "wash_frequency",
+                  "op": "in",
+                  "value": [
+                    "weekly"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "dry-texture-spray",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "straight"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-this-is-a-dry-texturizer",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "straight"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "medium"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "molding-cream",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "straight"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-this-is-a-sea-salt-spray",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "wavy"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "texture-clay",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "wavy"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "medium"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-freestyle-texturizer",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "wavy"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "luminous-hairspray-strong",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "rahua-cream-wax",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "medium"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "sculpting-pomade",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_texture",
+                  "op": "in",
+                  "value": [
+                    "curly"
+                  ]
+                },
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "thick"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "healthy"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "davines-this-is-a-medium-hairspray",
+            "when": {
+              "all": [
+                {
+                  "q": "hair_thickness",
+                  "op": "in",
+                  "value": [
+                    "fine"
+                  ]
+                },
+                {
+                  "q": "hair_damage",
+                  "op": "in",
+                  "value": [
+                    "dry_frizzy",
+                    "damaged"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "product": "frizz-shield-spray",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "damaged"
+              ]
+            }
+          },
+          {
+            "product": "intense-smoothing-serum",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "wavy",
+                "curly"
+              ]
+            }
+          },
+          {
+            "product": "smoothing-lotion",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "fine"
+              ]
+            }
+          },
+          {
+            "product": "rahua-smoothing-hair-balm",
+            "when": {
+              "q": "hair_thickness",
+              "op": "in",
+              "value": [
+                "thick"
+              ]
+            }
+          },
+          {
+            "product": "perfect-defense-heat-protectant",
+            "when": {
+              "q": "hair_damage",
+              "op": "in",
+              "value": [
+                "dry_frizzy"
+              ]
+            }
+          },
+          {
+            "product": "hydrating-styling-cream",
+            "when": {
+              "q": "hair_texture",
+              "op": "in",
+              "value": [
+                "straight"
+              ]
+            }
+          },
+          {
+            "product": "frizz-shield-spray"
+          }
+        ]
+      }
+    },
+    "addons_by_label": {
+      "Repair": [
+        {
+          "product": "rahua-elixir",
+          "when": {
+            "any": [
+              {
+                "q": "hair_thickness",
+                "op": "in",
+                "value": [
+                  "thick"
+                ]
+              },
+              {
+                "q": "hair_texture",
+                "op": "in",
+                "value": [
+                  "curly"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "product": "aromatica-quinoa-protein-hair-ampoule",
+          "when": {
+            "q": "hair_damage",
+            "op": "in",
+            "value": [
+              "damaged"
+            ]
+          }
+        },
+        {
+          "product": "davines-nounou-mask",
+          "when": {
+            "q": "chemical_history",
+            "op": "contains_any",
+            "value": [
+              "dyed",
+              "bleached",
+              "permed"
+            ]
+          }
+        },
+        {
+          "product": "mending-infusion",
+          "when": {
+            "q": "hair_damage",
+            "op": "in",
+            "value": [
+              "damaged"
+            ]
+          }
+        },
+        {
+          "product": "rahua-leave-in-treatment",
+          "when": {
+            "q": "hair_damage",
+            "op": "in",
+            "value": [
+              "dry_frizzy"
+            ]
+          }
+        },
+        {
+          "product": "rahua-omega-9-hair-mask"
+        },
+        {
+          "product": "moroccanoil-treatment-original"
+        }
+      ],
+      "Scalp": [
+        {
+          "product": "aromatica-tea-tree-purifying-tonic",
+          "when": {
+            "q": "scalp_condition",
+            "op": "in",
+            "value": [
+              "oily"
+            ]
+          }
+        },
+        {
+          "product": "rahua-scalp-skin-toner",
+          "when": {
+            "q": "scalp_condition",
+            "op": "in",
+            "value": [
+              "dry_sensitive"
+            ]
+          }
+        },
+        {
+          "product": "purifying-pre-wash-scalp-scrub",
+          "when": {
+            "q": "scalp_condition",
+            "op": "in",
+            "value": [
+              "flaky"
+            ]
+          }
+        },
+        {
+          "product": "aromatica-rosemary-root-enhancer"
+        },
+        {
+          "product": "davines-energizing-overnight-serum"
+        },
+        {
+          "product": "aromatica-rosemary-pdrn-scalp-serum"
+        }
+      ],
+      "Color": [
+        {
+          "product": "platinum-color-depositing-mask",
+          "when": {
+            "q": "chemical_history",
+            "op": "contains_any",
+            "value": [
+              "bleached"
+            ]
+          }
+        },
+        {
+          "product": "davines-heart-of-glass-instant-bonding-glow",
+          "when": {
+            "q": "chemical_history",
+            "op": "contains_any",
+            "value": [
+              "bleached"
+            ]
+          }
+        },
+        {
+          "product": "rahua-color-fulltm-glossing-oil-mist"
+        },
+        {
+          "product": "high-shine-gloss-mask"
+        }
+      ],
+      "Curl": [
+        {
+          "product": "davines-this-is-a-curl-building-serum",
+          "when": {
+            "q": "hair_texture",
+            "op": "in",
+            "value": [
+              "wavy"
+            ]
+          }
+        },
+        {
+          "product": "rahua-enchanted-islandtm-vegan-curl-butter",
+          "when": {
+            "q": "hair_thickness",
+            "op": "in",
+            "value": [
+              "thick"
+            ]
+          }
+        },
+        {
+          "product": "rahua-control-cream-curl-styler",
+          "when": {
+            "q": "hair_thickness",
+            "op": "in",
+            "value": [
+              "medium"
+            ]
+          }
+        },
+        {
+          "product": "curl-defining-cream"
+        },
+        {
+          "product": "rahua-aloe-vera-hair-gel"
+        }
+      ],
+      "Hydration": [
+        {
+          "product": "rahua-legendary-amazon-oiltm",
+          "when": {
+            "q": "hair_texture",
+            "op": "in",
+            "value": [
+              "curly"
+            ]
+          }
+        },
+        {
+          "product": "davines-nourishing-oil",
+          "when": {
+            "q": "hair_damage",
+            "op": "in",
+            "value": [
+              "dry_frizzy"
+            ]
+          }
+        },
+        {
+          "product": "moroccanoil-treatment-mist",
+          "when": {
+            "q": "hair_thickness",
+            "op": "in",
+            "value": [
+              "fine"
+            ]
+          }
+        },
+        {
+          "product": "aromatica-ritual-hair-oil-jasmine-vetiver",
+          "when": {
+            "q": "hair_texture",
+            "op": "in",
+            "value": [
+              "straight"
+            ]
+          }
+        },
+        {
+          "product": "davines-oi-oil"
+        },
+        {
+          "product": "aromatica-ritual-hair-oil-lavender-patchouli"
+        },
+        {
+          "product": "overnight-leave-in-mask"
+        }
+      ],
+      "Volume": [
+        {
+          "product": "texture-volume-hair-powder",
+          "when": {
+            "q": "hair_thickness",
+            "op": "in",
+            "value": [
+              "fine"
+            ]
+          }
+        },
+        {
+          "product": "rahua-voluminous-dry-shampoo",
+          "when": {
+            "all": [
+              {
+                "q": "scalp_condition",
+                "op": "in",
+                "value": [
+                  "oily"
+                ]
+              },
+              {
+                "q": "wash_frequency",
+                "op": "in",
+                "value": [
+                  "weekly",
+                  "every_2_3_days"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "product": "aromatica-rosemary-dry-shampoo-powder",
+          "when": {
+            "q": "scalp_condition",
+            "op": "in",
+            "value": [
+              "oily"
+            ]
+          }
+        },
+        {
+          "product": "davines-this-is-an-invisible-dry-shampoo",
+          "when": {
+            "q": "scalp_condition",
+            "op": "in",
+            "value": [
+              "normal"
+            ]
+          }
+        },
+        {
+          "product": "thickening-lotion"
+        }
+      ]
+    },
+    "preference": {
+      "question": "formula_preference",
+      "product_tag": "formula",
+      "none_value": "none"
+    }
+  },
+  "inventory_policy": {
+    "require_active": true,
+    "require_available_greater_than": 0,
+    "substitution_order": [
+      "explicit_candidates",
+      "tag_equivalents"
+    ],
+    "tag_equivalent_rule": "cùng step, quiz.needs chứa nhãn chính, tương thích da đầu, allow_auto_substitute=true; ưu tiên sản phẩm chuyên biệt hơn (ít nhãn hơn), hòa thì theo key",
+    "on_no_substitute": "skip_step_with_note"
+  },
+  "messages": {
+    "substituted_vi": "{original} tạm hết hàng, được thay bằng {replacement} có công dụng tương đương.",
+    "skipped_out_of_stock_vi": "Bước {step}: {original} tạm hết hàng và chưa có sản phẩm thay thế tương đương nên bước này được bỏ qua.",
+    "skipped_no_match_vi": "Bước {step}: chưa có sản phẩm phù hợp với tình trạng của bạn nên bước này được bỏ qua.",
+    "fallback_vi": "Câu trả lời của bạn không khớp luật đặc trị nào, FOLMARÉ gợi ý routine cấp ẩm hằng ngày an toàn cho mọi loại tóc.",
+    "min_steps_vi": "Routine hiện chỉ có {n}/4 bước do một số sản phẩm đang hết hàng."
+  },
+  "disclaimer": {
+    "rule": "BR-QUZ-09",
+    "text_en": "Results are for cosmetic beauty consultation purposes and do not replace professional dermatological diagnosis or medical treatment",
+    "text_vi": "Kết quả chỉ mang tính tư vấn làm đẹp, không thay thế chẩn đoán da liễu hay điều trị y khoa chuyên nghiệp."
+  }
+}

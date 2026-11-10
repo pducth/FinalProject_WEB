@@ -1,0 +1,41 @@
+# JavaScript dependencies and generated output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.angular/cache/
+**/.angular/cache/
+out-tsc/
+**/out-tsc/
+
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Local IDE state
+.idea/workspace.xml
+
+# Raw crawl output (1.3 GB of source images); rebuild with the scripts in scripts/
+data/store/
+.idea/
+
+# Large local media and Office temp files
+docs/media/
+~$*
+
+# Coursework material kept only locally (not needed to build or deploy the web app):
+# report, test evidence, figures, wireframes and partner-brand logos
+docs/report/
+docs/testing/
+docs/design/wireframes/
+docs/design/partner-logos/
+docs/diagram/

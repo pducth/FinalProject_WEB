@@ -1,0 +1,201 @@
+<section class="app-screen animate-fadeIn">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+    <nav class="text-xs text-[#85968E] mb-8 flex items-center gap-2" aria-label="Breadcrumb">
+      <a routerLink="/" class="hover:text-[#19594A]">Home</a>
+      <span>/</span>
+      <span class="text-[#0F3D32] font-semibold">Account</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+      <div class="flex items-center gap-5">
+        <span class="w-16 h-16 bg-[#0F3D32] text-white fm-display text-xl flex items-center justify-center shrink-0" aria-hidden="true">{{ initials() }}</span>
+        <div class="min-w-0">
+          <span class="fm-eyebrow">Account</span>
+          <h1 class="fm-display text-3xl sm:text-4xl text-[#0F3D32] leading-snug mt-1 break-words">{{ user()?.fullName }}</h1>
+          <p class="text-sm text-[#5E6F68] mt-1 truncate">{{ user()?.email }} · Member since {{ user()?.createdAt | date: 'MMM yyyy' }}</p>
+        </div>
+      </div>
+      <button type="button" (click)="signOut()" class="self-start sm:self-auto text-xs font-bold uppercase tracking-[0.14em] text-[#C9503A] hover:underline">Sign out</button>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 mt-8 bg-white border border-[#DCE5E0]">
+      <!-- Left: orders and hair profile -->
+      <aside class="lg:col-span-5 relative overflow-hidden text-white bg-gradient-to-br from-[#082A22] via-[#0F3D32] to-[#3F7F6B]">
+        <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#9CC3B4]/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+        <a routerLink="/orders" class="group flex items-center justify-between gap-4 p-6 sm:p-8 relative border-b border-white/15 hover:bg-white/5 transition-colors">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#B7D3C7]">Orders</span>
+            <p class="fm-display text-2xl text-white mt-1">Order history</p>
+            <p class="text-xs text-white/70 mt-1">{{ orderCount() }} order{{ orderCount() === 1 ? '' : 's' }} · track, cancel or return</p>
+          </div>
+          <svg class="w-5 h-5 shrink-0 text-white transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+
+        <div class="relative p-6 sm:p-8">
+          <div class="flex items-baseline justify-between gap-3">
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#B7D3C7]">Hair profile</span>
+            @if (hairProfile(); as hp) { <span class="text-[10px] text-white/60">Saved {{ hp.savedAt | date: 'mediumDate' }}</span> }
+          </div>
+          @if (hairProfile(); as hp) {
+            <div class="grid grid-cols-2 gap-px bg-white/20 border border-white/20 mt-4">
+              <div class="bg-white/10 p-4"><span class="block text-[10px] font-bold uppercase tracking-[0.14em] text-[#B7D3C7]">Main focus</span><strong class="fm-display text-lg text-white">{{ labelTitle(hp.primaryLabel) }}</strong></div>
+              <div class="bg-white/10 p-4"><span class="block text-[10px] font-bold uppercase tracking-[0.14em] text-[#B7D3C7]">Also</span><strong class="fm-display text-lg text-white">{{ labelTitle(hp.secondaryLabel) }}</strong></div>
+            </div>
+            <ul class="mt-4 divide-y divide-white/15 border-t border-b border-white/15">
+              @for (item of routineItems(); track item.step) {
+                <li class="py-3 flex items-baseline justify-between gap-4 text-sm">
+                  <span class="text-[10px] font-bold uppercase tracking-[0.14em] text-[#B7D3C7] w-28 shrink-0">{{ stepTitles[item.step] }}</span>
+                  @if (item.product) {
+                    <a [routerLink]="['/products', item.product.id]" class="flex-1 text-right font-medium text-white hover:text-[#B7D3C7] line-clamp-1">{{ item.productName }}</a>
+                  } @else {
+                    <span class="flex-1 text-right text-white/60">{{ item.productName ?? 'Skipped' }}</span>
+                  }
+                </li>
+              }
+            </ul>
+          } @else {
+            <p class="fm-display text-xl text-white mt-3">No routine yet</p>
+            <p class="text-sm text-white/70 mt-1">Take the hair quiz to get a personal 4-step routine saved here.</p>
+          }
+          <div class="mt-5 flex items-center justify-between gap-4">
+            <button type="button" (click)="retakeQuiz()" class="text-xs font-bold uppercase tracking-[0.14em] text-white hover:text-[#B7D3C7] transition-colors">
+              {{ hairProfile() ? 'Retake the quiz →' : 'Take the hair quiz →' }}
+            </button>
+            @if (hairProfile()) {
+              <button type="button" (click)="deleteHairProfile()" class="text-xs font-bold uppercase tracking-[0.14em] text-[#F2B3A5] hover:text-white transition-colors">Delete</button>
+            }
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right: settings and addresses -->
+      <div class="lg:col-span-7 divide-y divide-[#DCE5E0]">
+        <form class="p-6 sm:p-8" (ngSubmit)="saveInfo()">
+          <span class="fm-eyebrow">Details</span>
+          <h2 class="fm-display text-2xl text-[#0F3D32] mt-1">Personal information</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+            <div>
+              <label for="pf-name" class="block text-xs font-bold text-[#0F3D32] mb-1">Full Name</label>
+              <input id="pf-name" name="fullName" type="text" autocomplete="name" [ngModel]="info().fullName" (ngModelChange)="info.set({ ...info(), fullName: $event })" class="field-input" />
+            </div>
+            <div>
+              <label for="pf-email" class="block text-xs font-bold text-[#0F3D32] mb-1">Email</label>
+              <input id="pf-email" name="email" type="email" autocomplete="email" [ngModel]="info().email" (ngModelChange)="info.set({ ...info(), email: $event })" class="field-input" />
+            </div>
+            <div>
+              <label for="pf-phone" class="block text-xs font-bold text-[#0F3D32] mb-1">Phone Number</label>
+              <input id="pf-phone" name="phone" type="tel" autocomplete="tel" [ngModel]="info().phone" (ngModelChange)="info.set({ ...info(), phone: $event })" class="field-input" />
+            </div>
+          </div>
+          <button type="submit" class="btn-primary text-xs px-6 py-2.5 mt-6">Save Changes</button>
+        </form>
+
+        <div class="p-6 sm:p-8 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="fm-eyebrow">Security</span>
+            <h2 class="fm-display text-2xl text-[#0F3D32] mt-1">Password</h2>
+            <p class="text-sm text-[#5E6F68] mt-1">Keep your account safe with a strong password.</p>
+          </div>
+          <button type="button" (click)="openPassword()" class="btn-secondary text-xs px-6 py-2.5">Change password</button>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          <div class="flex items-end justify-between gap-4">
+            <div>
+              <span class="fm-eyebrow">Delivery</span>
+              <h2 class="fm-display text-2xl text-[#0F3D32] mt-1">Saved addresses</h2>
+            </div>
+            <button type="button" (click)="openAddress()" class="text-xs font-bold uppercase tracking-[0.14em] text-[#0F3D32] hover:text-[#4F7F72] transition-colors">+ Add address</button>
+          </div>
+          <div class="mt-6 grid gap-3">
+            @for (address of myAddresses(); track address.id) {
+              <div class="p-4 border flex justify-between items-start gap-4" [ngClass]="address.isDefault ? 'border-[#0F3D32]' : 'border-[#DCE5E0]'">
+                <div class="min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="font-semibold text-sm text-[#0F3D32]">{{ address.label }}</span>
+                    @if (address.isDefault) { <span class="text-[10px] font-bold uppercase tracking-[0.12em] text-white bg-[#0F3D32] px-2 py-0.5">Default</span> }
+                  </div>
+                  <p class="text-sm text-[#5E6F68] mt-1">{{ formatAddress(address) }}</p>
+                  <p class="text-xs text-[#85968E] mt-0.5">{{ address.recipientName }} · {{ address.phone }}</p>
+                </div>
+                <div class="flex flex-col items-end gap-1.5 shrink-0 text-xs font-bold">
+                  <button type="button" (click)="openAddress(address)" class="text-[#0F3D32] hover:underline">Edit</button>
+                  @if (!address.isDefault) { <button type="button" (click)="setDefault(address)" class="text-[#4F7F72] hover:underline">Set default</button> }
+                  <button type="button" (click)="removeAddress(address)" class="text-[#C9503A] hover:underline">Delete</button>
+                </div>
+              </div>
+            } @empty {
+              <p class="text-sm text-[#5E6F68]">No saved addresses yet. Add one for faster checkout.</p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-store-modal [open]="passwordModal()" title="Change password" (closed)="passwordModal.set(false)">
+    <form class="space-y-4" (ngSubmit)="changePassword()">
+      <div>
+        <label for="pw-current" class="block text-xs font-bold text-[#0F3D32] mb-1">Current Password</label>
+        <input id="pw-current" name="current" type="password" appPasswordToggle autocomplete="current-password" [ngModel]="passwords().current" (ngModelChange)="passwords.set({ ...passwords(), current: $event }); passwordError.set('')" class="field-input" />
+      </div>
+      <div>
+        <label for="pw-next" class="block text-xs font-bold text-[#0F3D32] mb-1">New Password</label>
+        <input id="pw-next" name="next" type="password" appPasswordToggle autocomplete="new-password" [ngModel]="passwords().next" (ngModelChange)="passwords.set({ ...passwords(), next: $event }); passwordError.set('')" class="field-input" />
+        <p class="text-[11px] text-[#85968E] mt-1.5">{{ passwordRule }}</p>
+      </div>
+      <div>
+        <label for="pw-confirm" class="block text-xs font-bold text-[#0F3D32] mb-1">Confirm New Password</label>
+        <input id="pw-confirm" name="confirm" type="password" appPasswordToggle autocomplete="new-password" [ngModel]="passwords().confirm" (ngModelChange)="passwords.set({ ...passwords(), confirm: $event }); passwordError.set('')" class="field-input" />
+      </div>
+      @if (passwordError()) { <p class="text-xs font-semibold text-red-600 bg-red-50 p-3" role="alert">{{ passwordError() }}</p> }
+      <button type="submit" class="btn-primary w-full py-3 text-sm font-bold">Update password</button>
+    </form>
+  </app-store-modal>
+
+  <app-store-modal [open]="addressModal() !== null" [title]="addressModal()?.id ? 'Edit Address' : 'Add New Address'" (closed)="addressModal.set(null)">
+    @if (addressModal(); as m) {
+      <form class="space-y-4" (ngSubmit)="saveAddress()">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="ad-label" class="block text-xs font-bold text-[#0F3D32] mb-1">Label</label>
+            <input id="ad-label" name="label" type="text" placeholder="Home, Office…" [ngModel]="m.draft.label" (ngModelChange)="setDraft('label', $event)" class="field-input" />
+          </div>
+          <div>
+            <label for="ad-phone" class="block text-xs font-bold text-[#0F3D32] mb-1">Phone *</label>
+            <input id="ad-phone" name="phone" type="tel" [ngModel]="m.draft.phone" (ngModelChange)="setDraft('phone', $event)" class="field-input" />
+          </div>
+        </div>
+        <div>
+          <label for="ad-name" class="block text-xs font-bold text-[#0F3D32] mb-1">Recipient Name *</label>
+          <input id="ad-name" name="recipientName" type="text" [ngModel]="m.draft.recipientName" (ngModelChange)="setDraft('recipientName', $event)" class="field-input" />
+        </div>
+        <div>
+          <label for="ad-street" class="block text-xs font-bold text-[#0F3D32] mb-1">Street Address *</label>
+          <input id="ad-street" name="street" type="text" [ngModel]="m.draft.street" (ngModelChange)="setDraft('street', $event)" class="field-input" />
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label for="ad-ward" class="block text-xs font-bold text-[#0F3D32] mb-1">Ward</label>
+            <input id="ad-ward" name="ward" type="text" [ngModel]="m.draft.ward" (ngModelChange)="setDraft('ward', $event)" class="field-input" />
+          </div>
+          <div>
+            <label for="ad-district" class="block text-xs font-bold text-[#0F3D32] mb-1">District</label>
+            <input id="ad-district" name="district" type="text" [ngModel]="m.draft.district" (ngModelChange)="setDraft('district', $event)" class="field-input" />
+          </div>
+          <div>
+            <label for="ad-city" class="block text-xs font-bold text-[#0F3D32] mb-1">City *</label>
+            <input id="ad-city" name="city" type="text" [ngModel]="m.draft.city" (ngModelChange)="setDraft('city', $event)" class="field-input" />
+          </div>
+        </div>
+        <label class="flex items-center gap-2 text-xs text-[#5E6F68]">
+          <input type="checkbox" name="isDefault" [checked]="m.draft.isDefault" (change)="setDraft('isDefault', $any($event.target).checked)" class="text-[#19594A] rounded" />
+          Use as my default address
+        </label>
+        @if (addressError()) { <p class="text-xs font-semibold text-red-600 bg-red-50 rounded-xl p-3" role="alert">{{ addressError() }}</p> }
+        <button type="submit" class="btn-primary w-full py-3 text-sm font-bold">Save Address</button>
+      </form>
+    }
+  </app-store-modal>
+</section>

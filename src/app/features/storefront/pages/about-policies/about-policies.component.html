@@ -1,0 +1,257 @@
+<ng-template #contactBand>
+      <div class="bg-[#0F3D32] text-center px-6 py-12 space-y-4">
+        <h2 class="text-2xl sm:text-3xl text-white">Questions? We are happy to help.</h2>
+        <a [href]="'https://mail.google.com/mail/?view=cm&fs=1&to=' + settings().supportEmail" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-7 py-3.5 border border-white text-white text-[0.8125rem] font-semibold uppercase tracking-[0.12em] hover:bg-white hover:text-[#0F3D32] transition-colors">{{ settings().supportEmail }}</a>
+      </div>
+</ng-template>
+
+<section class="app-screen animate-fadeIn">
+  @if (tab() === 'about') {
+    <div class="bg-[#F7F8F4]">
+      <!-- Hero · the brand film under the header, with the FOLMARÉ logo -->
+      <div class="relative isolate overflow-hidden bg-[#0F3D32] flex items-center justify-center" style="height: max(560px, 100svh)">
+        <h1 class="sr-only">Behind the brand</h1>
+        <video class="absolute inset-0 -z-10 w-full h-full object-cover brightness-125 contrast-105" src="/assets/folmare/video/hero.mp4" poster="/assets/folmare/video/hero-poster.jpg" autoplay muted loop playsinline preload="auto" appKeepPlaying aria-hidden="true"></video>
+        <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#082A22]/55 via-[#082A22]/10 to-[#082A22]/10" aria-hidden="true"></div>
+        <img src="/assets/folmare/logo/png/folmare-primary-dark.png" alt="FOLMARÉ, Botanical Haircare Edit" width="1242" height="749" class="relative w-[min(520px,62%)] min-w-[240px] h-auto brightness-0 invert drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]" />
+      </div>
+
+      <!-- How it started (image left, text right) -->
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="relative min-h-[300px] md:min-h-[480px]"><img src="/assets/folmare/about/about2-personal.jpg" alt="Brushing smooth, glossy hair" class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" /></div>
+        <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4]">
+          <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">How it started</h2>
+          <p class="text-lg text-[#33463F] font-normal leading-relaxed">FOLMARÉ joins <i>folium</i>, the leaf, and <i>mare</i>, the sea, for botanical calm, fluidity and a curated care journey. It began with a simple frustration: great haircare is scattered across brands, and it is hard to know which formula is truly right for your hair. So we built one calm place to shop the best of it.</p>
+        </div>
+      </div>
+
+      <!-- The edit (text left, image right) -->
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4] order-2 md:order-1">
+          <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">The curated edit</h2>
+          <p class="text-lg text-[#33463F] font-normal leading-relaxed">We are a retailer, not a manufacturer. Four houses shape our shelf: AROMATICA for aromatic scalp rituals, Rahua for Amazonian nourishment, Davines for conscious professional care and Moroccanoil for argan glow and finishing. Every one is chosen for its point of view and its results.</p>
+          <a routerLink="/shop" class="btn-primary">Shop now</a>
+        </div>
+        <div class="relative min-h-[300px] md:min-h-[480px] order-1 md:order-2"><img src="/assets/folmare/about/about9-edit.jpg" alt="Gathering glossy brunette hair into a high ponytail against a sage backdrop" class="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>
+      </div>
+
+      <!-- FOLMARÉ today (centered rich text) -->
+      <div class="bg-[#EEF3EF] text-center px-6 py-14 md:py-20">
+        <div class="max-w-3xl mx-auto space-y-4">
+          <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">FOLMARÉ today</h2>
+          <p class="text-lg text-[#33463F] font-normal leading-relaxed">What began as a small, hand-picked collection has grown into a full botanical haircare edit: shampoos, conditioners, masks, treatment oils, dry shampoos and styling finishers, all genuine, all guided by a Hair Quiz that builds your routine.</p>
+        </div>
+      </div>
+
+      <!-- Hair quiz (image left, text right) -->
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="relative min-h-[300px] md:min-h-[480px]"><img src="/assets/folmare/about/about8-start.jpg" alt="Two women with sleek, healthy hair against a sage green backdrop" class="absolute inset-0 w-full h-full object-cover object-[center_30%]" loading="lazy" /></div>
+        <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4]">
+          <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Haircare, made personal</h2>
+          <p class="text-lg text-[#33463F] font-normal leading-relaxed">Not sure where to begin? Our Hair Quiz turns salon know-how into a personal 4-step routine of cleanse, condition, treat and finish, matched to your hair type, concerns and goals. Your answers stay private: we only record anonymous statistics.</p>
+          <a routerLink="/quiz" class="btn-primary">Get started</a>
+        </div>
+      </div>
+
+      <!-- Oils (text left, image right) -->
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4] order-2 md:order-1">
+          <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Oils &amp; finishing touches</h2>
+          <p class="text-lg text-[#33463F] font-normal leading-relaxed">From weightless treatment oils to styling finishers, our final-step favourites add shine, tame frizz and protect, the glow that makes a routine feel complete.</p>
+          <a routerLink="/shop" class="btn-primary">Shop now</a>
+        </div>
+        <div class="relative min-h-[300px] md:min-h-[480px] order-1 md:order-2"><img src="/assets/folmare/about/oils-collection.jpg" alt="Moroccanoil Treatment collection on a stone plinth" class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" /></div>
+      </div>
+
+      <!-- Four origins -->
+      <div class="bg-[#F7F8F4] pt-16 md:pt-20 pb-4">
+        <div class="text-center px-6">
+          <p class="fm-eyebrow">Four origins</p>
+          <h2 class="mt-3 text-4xl sm:text-5xl text-[#0F3D32]">One beautiful <i>ritual.</i></h2>
+        </div>
+
+        <div role="tablist" aria-label="The four houses" class="mt-10 mx-auto max-w-4xl px-4 grid grid-cols-4 border-b border-[#DCE5E0]">
+          @for (o of origins; track o.name; let i = $index) {
+            <button type="button" role="tab" (click)="origin.set(i)" [attr.aria-selected]="origin() === i"
+              class="relative h-20 flex items-center justify-center px-2 transition-opacity" [ngClass]="origin() === i ? 'opacity-100' : 'opacity-45 hover:opacity-80'">
+              <img [src]="o.logo" [alt]="o.name" [class]="o.logoClass + ' w-auto max-w-full object-contain'" />
+              <span class="absolute inset-x-0 -bottom-px h-[2px] bg-[#0F3D32] transition-transform origin-left" [ngClass]="origin() === i ? 'scale-x-100' : 'scale-x-0'"></span>
+            </button>
+          }
+        </div>
+
+        @if (currentOrigin(); as o) {
+          <div class="mt-10 grid grid-cols-1 md:grid-cols-2 animate-fadeIn" role="tabpanel">
+            <div class="relative aspect-video overflow-hidden bg-[#E4F0E9]">
+              @if (o.video) {
+                <video appKeepPlaying [src]="o.start ? o.video + '#t=' + o.start : o.video" [poster]="o.poster" [muted]="true" [defaultMuted]="true" autoplay playsinline (loadedmetadata)="seek($event, o.start)" (ended)="seek($event, o.start); $any($event.target).play()" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true"></video>
+              } @else {
+                <div class="absolute inset-0 bg-gradient-to-br from-[#F4F9F6] via-[#DCEBE2] to-[#A9CDBB]" aria-hidden="true"></div>
+                <img [src]="o.poster" [alt]="o.name" class="relative h-[80%] w-auto object-contain drop-shadow-[0_20px_30px_rgba(15,61,50,0.25)]" />
+              }
+            </div>
+            <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4]">
+              <img [src]="o.logo" [alt]="o.name" [class]="o.bigClass + ' w-auto max-w-full object-contain'" />
+              <h3 class="text-4xl sm:text-5xl text-[#0F3D32]"><i>{{ o.role }}</i></h3>
+              <p class="text-lg text-[#33463F] font-normal leading-relaxed">{{ o.text }}</p>
+              <a routerLink="/shop" [queryParams]="{ brand: o.brand }" class="btn-primary">Shop {{ o.name }}</a>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Our promises -->
+      <div class="text-center px-6 pt-4 pb-10 md:pb-12">
+        <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Our promises</h2>
+      </div>
+
+      <div class="relative overflow-hidden bg-[#0F3D32]">
+        <div class="flex transition-transform duration-500" [style.transform]="'translateX(-' + slide() * 100 + '%)'">
+          @for (s of slides; track s.title; let i = $index) {
+            <div class="relative w-full shrink-0 min-h-[340px] md:min-h-[420px] flex items-center" role="group" [attr.aria-label]="(i + 1) + ' of ' + slides.length" [attr.aria-hidden]="slide() !== i">
+              <img [src]="s.image" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-[center_28%]" [ngClass]="[s.flip ? '-scale-x-100' : '', s.pos ?? '']" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-r" [ngClass]="s.dark ? 'from-[#0F3D32]/80 via-[#0F3D32]/30 to-transparent' : 'from-[#F7F8F4]/90 via-[#F7F8F4]/40 to-transparent'"></div>
+              <div class="relative w-full max-w-7xl mx-auto px-6 sm:px-10 py-12">
+                <div class="max-w-md space-y-4" [ngClass]="s.dark ? 'text-white' : 'text-[#0F3D32]'">
+                  <h3 class="text-3xl sm:text-4xl font-medium fm-display">{{ s.title }}</h3>
+                  <p class="text-sm sm:text-base opacity-90">{{ s.text }}</p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="flex items-center justify-center gap-4 py-4 bg-[#F7F8F4]">
+          <button type="button" (click)="prev()" [disabled]="slide() === 0" aria-label="Previous slide" class="w-9 h-9 rounded-full border border-[#19594A] text-[#19594A] disabled:opacity-30">‹</button>
+          <div class="flex gap-2">
+            @for (s of slides; track s.title; let i = $index) {
+              <button type="button" (click)="go(i)" [attr.aria-label]="'Go to slide ' + (i + 1)" class="w-2.5 h-2.5 rounded-full" [ngClass]="slide() === i ? 'bg-[#19594A]' : 'bg-[#DCE5E0]'"></button>
+            }
+          </div>
+          <button type="button" (click)="next()" [disabled]="slide() === slides.length - 1" aria-label="Next slide" class="w-9 h-9 rounded-full border border-[#19594A] text-[#19594A] disabled:opacity-30">›</button>
+        </div>
+      </div>
+
+      <ng-container [ngTemplateOutlet]="contactBand" />
+    </div>
+  } @else {
+    <div class="bg-[#F7F8F4]">
+      <!-- Hero banner (per tab), same size as the FAQ page -->
+      <div class="relative flex items-center min-h-[320px] md:min-h-[440px] overflow-hidden bg-[#E9DFD2]">
+        <img [src]="hero().image" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#F7F8F4]/85 via-[#F7F8F4]/35 to-transparent"></div>
+        <div class="relative w-full max-w-7xl mx-auto px-6 sm:px-10 py-14">
+          <div class="max-w-3xl space-y-4">
+            <span class="fm-eyebrow">{{ hero().eyebrow }}</span>
+            <h1 class="text-3xl sm:text-5xl text-[#0F3D32]">{{ hero().title }}</h1>
+            <p class="text-sm sm:text-base text-[#0F3D32]/85">{{ hero().text }}</p>
+          </div>
+        </div>
+      </div>
+
+      @switch (tab()) {
+        @case ('shipping') {
+          <!-- At a glance -->
+          <div class="bg-[#DCE5E0] border-y border-[#DCE5E0]">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-px">
+              <div class="bg-[#F7F8F4] px-6 py-8 sm:py-10 text-center space-y-2"><div class="fm-display text-4xl sm:text-5xl text-[#0F3D32]">{{ settings().shippingFee | usd }}</div><p class="text-sm uppercase tracking-widest text-[#33463F] font-normal">Flat shipping, nationwide</p></div>
+              <div class="bg-[#F7F8F4] px-6 py-8 sm:py-10 text-center space-y-2"><div class="fm-display text-4xl sm:text-5xl text-[#0F3D32]">3–5 days</div><p class="text-sm uppercase tracking-widest text-[#33463F] font-normal">Business-day delivery</p></div>
+              <div class="bg-[#F7F8F4] px-6 py-8 sm:py-10 text-center space-y-2"><div class="fm-display text-4xl sm:text-5xl text-[#0F3D32]">COD or bank</div><p class="text-sm uppercase tracking-widest text-[#33463F] font-normal">Payment options</p></div>
+              <div class="bg-[#F7F8F4] px-6 py-8 sm:py-10 text-center space-y-2"><div class="fm-display text-4xl sm:text-5xl text-[#0F3D32]">{{ settings().paymentTimeoutMinutes }} min</div><p class="text-sm uppercase tracking-widest text-[#33463F] font-normal">To complete a transfer</p></div>
+            </div>
+          </div>
+
+          <!-- Payment (image left) -->
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="relative min-h-[300px] md:min-h-[460px]"><img src="/assets/folmare/about/ship-pay-6.jpg" alt="Hands gathering freshly washed hair, a quiet moment of care" class="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>
+            <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4]">
+              <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Payment</h2>
+              <p class="text-lg text-[#33463F] font-normal leading-relaxed">Pay in cash when your order arrives (COD) or by bank transfer. For a transfer, scan the QR code and complete the payment within <strong class="text-[#0F3D32]">{{ settings().paymentTimeoutMinutes }} minutes</strong>. After that the QR code expires, the order is not placed and any discount code is returned to you. You can start again from checkout, or choose cash on delivery instead.</p>
+              <a routerLink="/shop" class="btn-primary">Shop now</a>
+            </div>
+          </div>
+
+          <!-- Prices & cancellation (image right) -->
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4] order-2 md:order-1">
+              <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Prices, codes &amp; cancellation</h2>
+              <ul class="space-y-4 text-lg text-[#33463F] font-normal leading-relaxed">
+                <li><strong class="text-[#0F3D32]">Prices</strong> are listed in US dollars (USD) per size variant and include applicable taxes. The price, size and discount at the moment you order are locked on your receipt.</li>
+                <li><strong class="text-[#0F3D32]">Discount codes:</strong> one code per order; the discount never exceeds the product subtotal.</li>
+                <li><strong class="text-[#0F3D32]">Cancellation:</strong> you can cancel an order until it ships. Paid orders are refunded in full. Orders already shipping can no longer be cancelled.</li>
+              </ul>
+            </div>
+            <div class="relative min-h-[300px] md:min-h-[460px] order-1 md:order-2"><img src="/assets/folmare/about/ship-price-9.jpg" alt="A quiet portrait with a sleek high ponytail, eyes cast down" class="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>
+          </div>
+        }
+        @case ('returns') {
+          <!-- 3 steps -->
+          <div class="bg-[#DCE5E0] border-y border-[#DCE5E0]">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-px">
+              <div class="bg-[#F7F8F4] px-8 py-8 sm:py-10 text-center space-y-3"><div class="fm-display text-5xl text-[#4F7F72]">01</div><h3 class="text-2xl font-bold text-[#0F3D32]">Request</h3><p class="text-lg text-[#33463F] font-normal leading-relaxed">Open <a routerLink="/orders" class="font-bold text-[#19594A] hover:underline">your order page</a> within <strong class="text-[#0F3D32]">{{ settings().returnWindowDays }} days</strong> after the order is delivered.</p></div>
+              <div class="bg-[#F7F8F4] px-8 py-8 sm:py-10 text-center space-y-3"><div class="fm-display text-5xl text-[#4F7F72]">02</div><h3 class="text-2xl font-bold text-[#0F3D32]">Send it back</h3><p class="text-lg text-[#33463F] font-normal leading-relaxed">Returns cover the entire order, with products unopened and in the original seal.</p></div>
+              <div class="bg-[#F7F8F4] px-8 py-8 sm:py-10 text-center space-y-3"><div class="fm-display text-5xl text-[#4F7F72]">03</div><h3 class="text-2xl font-bold text-[#0F3D32]">Get refunded</h3><p class="text-lg text-[#33463F] font-normal leading-relaxed">Once approved, you receive the order total minus the {{ settings().shippingFee | usd }} shipping fee.</p></div>
+            </div>
+          </div>
+
+          <!-- What can be returned (image left) -->
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="relative min-h-[300px] md:min-h-[460px]"><img src="/assets/folmare/about/ret-rules-6.jpg" alt="Sleek brunette hair in soft, even light" class="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>
+            <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4]">
+              <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">What can be returned</h2>
+              <ul class="space-y-3 text-lg text-[#33463F] font-normal leading-relaxed">
+                <li><span>Returns cover the <strong class="text-[#0F3D32]">entire order</strong>; partial returns are not available.</span></li>
+                <li><span>Products must be unopened with the original seal, except when an item arrived defective or was not what you ordered.</span></li>
+              </ul>
+              <a routerLink="/orders" class="btn-primary">Go to my orders</a>
+            </div>
+          </div>
+
+          <!-- Refunds (image right) -->
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4] order-2 md:order-1">
+              <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Refunds</h2>
+              <ul class="space-y-3 text-lg text-[#33463F] font-normal leading-relaxed">
+                <li><span>Once approved, you receive the order total minus the {{ settings().shippingFee | usd }} shipping fee. If the store made a mistake, shipping is refunded too.</span></li>
+                <li><span>Cancelled orders that were already paid are refunded <strong class="text-[#0F3D32]">100%</strong>.</span></li>
+              </ul>
+            </div>
+            <div class="relative min-h-[300px] md:min-h-[460px] order-1 md:order-2"><img src="/assets/folmare/about/ret-refund-7.jpg" alt="Long, dark waves seen from behind in soft grey light" class="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>
+          </div>
+        }
+        @case ('privacy') {
+          <!-- 3 principles -->
+          <div class="bg-[#DCE5E0] border-y border-[#DCE5E0]">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-px">
+              <div class="bg-[#F7F8F4] px-8 py-8 sm:py-10 text-center space-y-3"><h3 class="text-2xl font-bold text-[#0F3D32]">Only what we need</h3><p class="text-lg text-[#33463F] font-normal leading-relaxed">We store your account details, address book, order history and saved Hair Profile only to provide our services.</p></div>
+              <div class="bg-[#F7F8F4] px-8 py-8 sm:py-10 text-center space-y-3"><h3 class="text-2xl font-bold text-[#0F3D32]">Anonymous quiz stats</h3><p class="text-lg text-[#33463F] font-normal leading-relaxed">Hair Quiz statistics record time, hair-need labels and ruleset version only, never your answers or identity.</p></div>
+              <div class="bg-[#F7F8F4] px-8 py-8 sm:py-10 text-center space-y-3"><h3 class="text-2xl font-bold text-[#0F3D32]">Protected accounts</h3><p class="text-lg text-[#33463F] font-normal leading-relaxed">Strong passwords and automatic lock-outs help keep every account safe.</p></div>
+            </div>
+          </div>
+
+          <!-- Account security (image left) -->
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="relative min-h-[300px] md:min-h-[460px]"><img src="/assets/folmare/about/priv-account-skin.jpg" alt="Warm, glowing skin in soft light" class="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>
+            <div class="flex flex-col justify-center items-start gap-5 px-8 sm:px-10 lg:px-12 py-12 bg-[#F7F8F4]">
+              <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Your account, safeguarded</h2>
+              <ul class="space-y-3 text-lg text-[#33463F] font-normal leading-relaxed">
+                <li><span>Each email address and phone number can be linked to one account.</span></li>
+                <li><span>Passwords require at least 8 characters with upper- and lowercase letters and a number; after 5 failed sign-ins the account is locked for 5 minutes.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Advice note -->
+          <div class="bg-[#EEF3EF] text-center px-6 py-14 md:py-20">
+            <div class="max-w-3xl mx-auto space-y-4">
+              <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">A note on hair advice</h2>
+              <p class="text-lg text-[#33463F] font-normal leading-relaxed">Quiz results are cosmetic advice and do not replace a dermatological diagnosis.</p>
+            </div>
+          </div>
+        }
+      }
+
+
+      <ng-container [ngTemplateOutlet]="contactBand" />
+    </div>
+  }
+</section>

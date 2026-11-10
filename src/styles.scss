@@ -1,0 +1,12 @@
+@use "./styles/tokens";
+@use "./styles/base";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./styles/globals.css";
+@import "./styles/styleguide.css";
+@import "./styles/components.css";
+@import "./styles/folmare.css";
+@import "./styles/admin.css";

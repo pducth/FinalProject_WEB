@@ -1,0 +1,156 @@
+<section id="page-c01-home" class="app-screen">
+  <!-- Hero · the four signature products on a slowly turning ring -->
+  <app-hero-scene [products]="heroProducts()" />
+
+  <!-- Hair routine quiz · invitation on the left, the four steps as a path on the right -->
+  <section class="!pt-0 !pb-0" aria-labelledby="quiz-heading">
+    <div class="relative overflow-hidden" style="background: radial-gradient(ellipse 50% 70% at 0% 0%, #FFFFFF 0%, rgb(255 255 255 / 0%) 70%), radial-gradient(ellipse 55% 80% at 100% 100%, #A9CDBB 0%, rgb(169 205 187 / 0%) 75%), linear-gradient(160deg, #F4F9F6 0%, #DCEBE2 100%)">
+      <span class="absolute -left-6 -bottom-16 font-display italic text-[#0F3D32]/[0.05] text-[22rem] leading-none select-none pointer-events-none" aria-hidden="true">4</span>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-12 lg:gap-20 items-center">
+        <div class="text-center lg:text-left">
+          <h2 id="quiz-heading" class="text-5xl sm:text-[56px] leading-[1.08] text-[#0F3D32]">Hair Quiz<span class="block mt-1 text-[26px] sm:text-[38px] whitespace-nowrap">Four steps - One ritual.</span></h2>
+          <p class="mt-6 text-[15px] text-[#5E6F68] leading-relaxed max-w-md mx-auto lg:mx-0">Answer a few quick questions about your scalp, strands, color history and goals. We build a personalized four-step routine from the products we carry, so you know exactly where to start.</p>
+          <div class="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-5">
+            <a routerLink="/quiz" class="btn-primary">
+              Take the quiz
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" /></svg>
+            </a>
+            <span class="text-xs text-[#5E6F68]">About one minute</span>
+          </div>
+        </div>
+        <ol class="relative space-y-3 before:absolute before:left-[39px] before:top-8 before:bottom-8 before:w-px before:bg-[#0F3D32]/20">
+          @for (step of quizSteps; track step.title; let i = $index) {
+            <li [appReveal]="i * 180" class="relative flex items-center gap-5 bg-white/80 border border-white px-5 py-4 shadow-[0_10px_30px_-18px_rgb(15_61_50/45%)]" [style.margin-left.px]="i % 2 ? 24 : 0">
+              <span class="relative z-10 shrink-0 w-[38px] h-[38px] flex items-center justify-center bg-[#0F3D32] text-white font-display italic text-lg">{{ i + 1 }}</span>
+              <div class="min-w-0">
+                <p class="font-display text-xl text-[#0F3D32] leading-tight">{{ step.title }}</p>
+                <p class="mt-0.5 text-[13px] text-[#5E6F68]">{{ step.text }}</p>
+              </div>
+            </li>
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+    <!-- Best sellers · centred heading + horizontal carousel (Crown Affair rhythm) -->
+  <section class="fm-section pb-4 lg:pb-8" aria-labelledby="best-heading">
+    <div class="text-center px-6 max-w-[80ch] mx-auto">
+      <h2 id="best-heading" class="text-3xl sm:text-[40px] leading-tight text-[#0F3D32]">Shop <i>best sellers</i></h2>
+    </div>
+
+    <div class="relative max-w-[1500px] mx-auto mt-10 lg:px-16">
+      <button type="button" (click)="track.scrollBy({ left: -340, behavior: 'smooth' })" aria-label="Previous products" class="hidden lg:flex absolute left-4 top-[34%] z-10 w-10 h-10 items-center justify-center text-[#0F3D32] hover:text-[#4F7F72] transition-colors duration-500">
+        <svg class="w-4 h-7" viewBox="0 0 15 28" fill="none" aria-hidden="true"><path d="M14 1L1 14L14 27" stroke="currentColor"/></svg>
+      </button>
+      <button type="button" (click)="track.scrollBy({ left: 340, behavior: 'smooth' })" aria-label="Next products" class="hidden lg:flex absolute right-4 top-[34%] z-10 w-10 h-10 items-center justify-center text-[#0F3D32] hover:text-[#4F7F72] transition-colors duration-500">
+        <svg class="w-4 h-7" viewBox="0 0 15 28" fill="none" aria-hidden="true"><path d="M1 1L14 14L1 27" stroke="currentColor"/></svg>
+      </button>
+
+      <div #track class="flex gap-3 lg:gap-6 overflow-x-auto snap-x snap-mandatory px-6 lg:px-0 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        @for (item of bestSellers(); track item.product.id) {
+          <div class="group product-card snap-start shrink-0 w-[78%] sm:w-[44%] lg:w-[calc((100%-4.5rem)/4)] flex flex-col">
+            <div class="relative">
+              <a [routerLink]="['/products', item.product.id]" class="ca-media relative overflow-hidden aspect-square cursor-pointer block">
+                <app-product-media [product]="item.product" />
+                <span class="absolute top-3 left-3 bg-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#0F3D32]">Best seller</span>
+              </a>
+              <app-wishlist-heart class="absolute bottom-2.5 right-2.5 z-10" [productId]="item.product.id" [name]="item.product.name" />
+            </div>
+            <div class="pt-5 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+              <p class="fm-brand-chip">{{ item.product.brand }}</p>
+              <a [routerLink]="['/products', item.product.id]" class="mt-1.5 block font-medium text-[#0F3D32] text-base leading-snug hover:text-[#4F7F72] transition-colors duration-500 cursor-pointer">{{ item.product.name }}</a>
+              <div class="flex items-center gap-1.5 mt-2 text-xs">
+                @if (item.stats.count) {
+                  <app-stars [rating]="item.stats.average" /> <span class="text-[#5E6F68]">({{ item.stats.count | compact }})</span>
+                } @else {
+                  <span class="text-[#85968E]">New in store</span>
+                }
+                @if (item.product.soldTotal) { <span class="font-semibold text-[#0F3D32]"><span class="font-normal text-[#85968E]">·</span> {{ item.product.soldTotal | compact }} sold</span> }
+              </div>
+              <div class="mt-auto pt-5 w-full">
+                <button type="button" (click)="addToCart(item.product)" [disabled]="!item.inStock" class="btn-primary w-full sm:w-auto">
+                  {{ item.inStock ? 'Add to bag' : 'Sold out' }} · {{ item.variant?.price ?? 0 | usd }}
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a routerLink="/shop" class="fm-text-link"><span>View the full collection</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-6-6 6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Two boxes · full-width split tiles -->
+  <section class="fm-section" aria-labelledby="category-heading">
+    <div class="text-center mb-8 px-6"><h2 id="category-heading" class="text-3xl sm:text-[40px] leading-tight text-[#0F3D32]">Find your <i>formula</i></h2></div>
+    <div class="grid md:grid-cols-2 gap-1">
+      <a routerLink="/shop" [queryParams]="{ category: 'Shampoo' }" class="group relative block overflow-hidden aspect-[5/4]">
+        <img src="/assets/folmare/category/box-shampoo.jpg" alt="Botanical shampoo and conditioner among cucumber slices" class="w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-90" loading="lazy" />
+        <span class="absolute inset-0 bg-gradient-to-t from-[#0A2A22]/60 via-[#0A2A22]/5 to-transparent" aria-hidden="true"></span>
+        <span class="absolute inset-x-0 bottom-0 p-8 lg:p-10 text-center"><span class="font-display text-2xl lg:text-3xl text-white border-b border-white/80 pb-1">Shop shampoo &amp; conditioner</span></span>
+      </a>
+      <a routerLink="/shop" [queryParams]="{ category: 'Treatment / Oil' }" class="group relative block overflow-hidden aspect-[5/4]">
+        <img src="/assets/folmare/category/box-oil.jpg" alt="Ritual hair oil resting on silk" class="w-full h-full object-cover transition-opacity duration-700 group-hover:opacity-90" loading="lazy" />
+        <span class="absolute inset-0 bg-gradient-to-t from-[#0A2A22]/60 via-[#0A2A22]/5 to-transparent" aria-hidden="true"></span>
+        <span class="absolute inset-x-0 bottom-0 p-8 lg:p-10 text-center"><span class="font-display text-2xl lg:text-3xl text-white border-b border-white/80 pb-1">Shop treatments &amp; oils</span></span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- Our brand: the title, the story, then the four houses -->
+  <div class="text-center px-6 pt-14 pb-10 md:pt-20 md:pb-12">
+    <h2 class="text-4xl sm:text-5xl text-[#0F3D32]">Our brand</h2>
+  </div>
+
+  <!-- Brand story · full-bleed image with a narrow text panel -->
+  <section class="!pt-0 !pb-0">
+    <div class="flex flex-col-reverse lg:flex-row-reverse">
+      <div class="relative isolate overflow-hidden w-full lg:w-[65%] min-h-[300px] lg:min-h-[480px] flex items-center bg-[#E9DFD2]">
+        <img src="/assets/folmare/about/about4-hero-sage.jpg" alt="" aria-hidden="true" class="absolute inset-0 -z-10 w-full h-full object-cover object-[80%_center] md:object-center" loading="lazy" />
+        <div class="relative w-full px-8 sm:px-12 lg:px-16 py-14">
+          <img src="/assets/folmare/logo/png/folmare-primary-dark.png" alt="FOLMARÉ, Botanical Haircare Edit" width="1242" height="749" class="w-56 sm:w-72 lg:w-80 h-auto" loading="lazy" />
+        </div>
+      </div>
+      <div class="w-full lg:w-[35%] flex flex-col justify-center bg-white px-6 py-14 lg:px-16 text-center lg:text-left">
+        <h2 class="text-4xl sm:text-[48px] text-[#0F3D32] leading-[1.08]"><i>Nature,</i><br />felt in every ritual.</h2>
+        <p class="mt-6 text-[15px] text-[#5E6F68] leading-relaxed">FOLMARÉ, from <i>folium</i>, the leaf, and <i>mare</i>, the sea, is a destination for leading haircare houses where nature, science and gentle rituals meet, for healthy hair and a calmer moment every day.</p>
+        <div class="mt-9 flex flex-wrap items-center justify-center lg:justify-start gap-5">
+          <a routerLink="/about" class="btn-secondary">Our story</a>
+          <a routerLink="/shop" class="fm-text-link">Shop now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The curated edit · the four houses as a quiet row of logos -->
+  <section class="fm-section" aria-labelledby="houses-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 id="houses-heading" class="text-3xl sm:text-[40px] text-[#0F3D32] leading-tight">Four brands, <i>one thoughtful ritual.</i></h2>
+      </div>
+      <ul class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 items-center" aria-label="Featured houses">
+        @for (brand of brands; track brand.name) {
+          <li>
+            <a routerLink="/shop" [queryParams]="{ brand: brand.name.toLowerCase() }" class="group flex flex-col items-center gap-5" [attr.aria-label]="brand.name">
+              <span class="flex items-center justify-center h-20 w-full">
+                @if (failedLogos().has(brand.name)) {
+                  <strong class="font-display text-2xl sm:text-3xl tracking-[0.18em] text-[#0F3D32]">{{ brand.name }}</strong>
+                } @else {
+                  <img [src]="brand.logo" [alt]="brand.name" (error)="logoFailed(brand.name)" [class]="'w-auto max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-105 ' + brand.logoClass" loading="lazy" />
+                }
+              </span>
+              <span class="block h-px w-full max-w-[300px] bg-transparent group-hover:bg-[#0F3D32] transition-colors duration-500" aria-hidden="true"></span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+</section>
